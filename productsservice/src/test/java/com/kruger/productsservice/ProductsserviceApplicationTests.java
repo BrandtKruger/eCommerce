@@ -1,9 +1,5 @@
 package com.kruger.productsservice;
 
-import com.kruger.productsservice.model.PRODUCT_CONDITION;
-import com.kruger.productsservice.model.PRODUCT_STATUS;
-import com.kruger.productsservice.model.Product;
-import com.kruger.productsservice.services.ProductService;
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
@@ -17,7 +13,7 @@ class ProductsserviceApplicationTests {
 	//@Test
 //	void loadTableToDB(){
 //		Product product = new Product();
-//		ProductService productService = new ProductService();
+//		ProductServiceImpl productService = new ProductServiceImpl();
 //
 //		product.setCategory("Phone");
 //		product.setDescription("iPhone11");
