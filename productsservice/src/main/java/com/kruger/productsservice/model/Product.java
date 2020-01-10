@@ -1,6 +1,7 @@
 package com.kruger.productsservice.model;
 
 import javax.persistence.*;
+import java.util.Arrays;
 
 @Entity
 @Table(name = "productinfo")
@@ -16,7 +17,7 @@ public class Product {
     private PRODUCT_CATEGORY category;
 
     @Lob
-    private Byte[] description;
+    private String description;
     private long price;
 
     @Column(name="product_condition")
@@ -34,12 +35,11 @@ public class Product {
     public Product() {
     }
 
+    public void setId(Long id) {
+        this.id = id;
+    }
     public long getId() {
         return id;
-    }
-
-    public void setId(long id) {
-        this.id = id;
     }
 
     public String getName() {
@@ -58,11 +58,11 @@ public class Product {
         this.category = category;
     }
 
-    public Byte[] getDescription() {
+    public String getDescription() {
         return description;
     }
 
-    public void setDescription(Byte[] description) {
+    public void setDescription(String description) {
         this.description = description;
     }
 
@@ -105,4 +105,6 @@ public class Product {
     public void setManufacturer(String manufacturer) {
         this.manufacturer = manufacturer;
     }
+
+
 }

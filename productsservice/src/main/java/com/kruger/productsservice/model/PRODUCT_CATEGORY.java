@@ -20,9 +20,8 @@ public enum PRODUCT_CATEGORY {
     @Column(name = "id", updatable = false, nullable = false)
     private Long id;
 
-    @Column(name = "product_category")
     @Enumerated(value = EnumType.STRING)
-    private PRODUCT_CATEGORY product_category;
+    private PRODUCT_CATEGORY category;
 
     @Transient
     private String productCategoryDescription;
@@ -44,12 +43,12 @@ public enum PRODUCT_CATEGORY {
         this.id = id;
     }
 
-    public PRODUCT_CATEGORY getProduct_category() {
-        return product_category;
+    public PRODUCT_CATEGORY getCategory() {
+        return category;
     }
 
-    public void setProduct_category(PRODUCT_CATEGORY product_category) {
-        this.product_category = product_category;
+    public void setCategory(PRODUCT_CATEGORY product_category) {
+        this.category = product_category;
     }
 
     public String getProductCategoryDescription() {

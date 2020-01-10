@@ -1,12 +1,11 @@
 package com.kruger.productsservice.services;
 
-import com.kruger.productsservice.model.PRODUCT_CONDITION;
-import com.kruger.productsservice.model.PRODUCT_STATUS;
-import com.kruger.productsservice.model.Product;
+import com.kruger.productsservice.model.*;
 import com.kruger.productsservice.repositories.ProductRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -21,6 +20,11 @@ public class ProductService {
 
     public void addProduct(Product product){
         productRepository.save(product);
+    }
+
+    public Products getProductsByCategory(PRODUCT_CATEGORY category){
+        List<Product> products =  productRepository.findByCategory(category);
+        return (Products) products;
     }
 
 }
