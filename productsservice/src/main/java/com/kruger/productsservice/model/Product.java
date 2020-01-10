@@ -1,7 +1,6 @@
 package com.kruger.productsservice.model;
 
 import javax.persistence.*;
-import java.util.Arrays;
 
 @Entity
 @Table(name = "productinfo")

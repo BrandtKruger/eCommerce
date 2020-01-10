@@ -2,7 +2,6 @@ package com.kruger.productsservice.services;
 
 import com.kruger.productsservice.model.*;
 import com.kruger.productsservice.repositories.ProductRepository;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -11,8 +10,11 @@ import java.util.Optional;
 @Service
 public class ProductServiceImpl implements ProductService {
 
-    @Autowired
-    private ProductRepository productRepository;
+    private final ProductRepository productRepository;
+
+    public ProductServiceImpl(ProductRepository productRepository) {
+        this.productRepository = productRepository;
+    }
 
     public Optional<Product> getProductById(long productId){
         return productRepository.findById(productId);
@@ -34,11 +36,8 @@ public class ProductServiceImpl implements ProductService {
     }
 
     public Optional<Products> getAllProducts() {
-
-        Iterable<Product> products;
-        products =  productRepository.findAll();
         Products productsList = new Products();
-        products.forEach(productsList::addProduct);
+        productRepository.findAll().iterator().forEachRemaining(productsList::addProduct);
         return Optional.of(productsList);
     }
 }
