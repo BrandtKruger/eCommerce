@@ -4,8 +4,10 @@ import com.kruger.productsservice.model.*;
 import com.kruger.productsservice.repositories.ProductRepository;
 import org.springframework.stereotype.Service;
 
+import java.util.HashSet;
 import java.util.List;
 import java.util.Optional;
+import java.util.Set;
 
 @Service
 public class ProductServiceImpl implements ProductService {
@@ -35,9 +37,10 @@ public class ProductServiceImpl implements ProductService {
         return productRepository.findById(productId);
     }
 
-    public Optional<Products> getAllProducts() {
-        Products productsList = new Products();
-        productRepository.findAll().iterator().forEachRemaining(productsList::addProduct);
-        return Optional.of(productsList);
+    @Override
+    public Set<Product> getAllProducts() {
+        Set<Product> productSet = new HashSet<>();
+        productRepository.findAll().iterator().forEachRemaining(productSet::add);
+        return productSet;
     }
 }

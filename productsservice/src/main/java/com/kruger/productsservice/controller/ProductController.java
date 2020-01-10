@@ -4,12 +4,13 @@ import com.kruger.productsservice.model.PRODUCT_CATEGORY;
 import com.kruger.productsservice.model.Product;
 import com.kruger.productsservice.model.Products;
 import com.kruger.productsservice.services.ProductServiceImpl;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.Optional;
 
-@RestController
-@RequestMapping("/product")
+@Controller
 public class ProductController {
 
     private final ProductServiceImpl productServiceImpl;
@@ -28,10 +29,10 @@ public class ProductController {
         return productServiceImpl.getProductsByCategory(category);
     }
 
-    @RequestMapping("/products")
-    public Optional<Products> getAllProducts(){
-        return productServiceImpl.getAllProducts();
-
+    @RequestMapping("/allproducts")
+    public String getAllProducts(Model model){
+        model.addAttribute("products", productServiceImpl.getAllProducts());
+        return "allproducts";
     }
 
 }

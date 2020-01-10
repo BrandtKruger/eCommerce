@@ -5,6 +5,7 @@ import com.kruger.productsservice.model.Product;
 import com.kruger.productsservice.model.Products;
 
 import java.util.Optional;
+import java.util.Set;
 
 public interface ProductService {
 
@@ -12,6 +13,6 @@ public interface ProductService {
     public void addProduct(Product product);
     public Optional<Products> getProductsByCategory(PRODUCT_CATEGORY category);
     public Optional<Product> findById(long productId);
-    public Optional<Products> getAllProducts();
+    Set<Product> getAllProducts();
 
 }

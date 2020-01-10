@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Apple Products</title>
+</head>
+<body>
+<h1>Apple Products</h1>
+
+<table>
+    <tr>
+        <th>ID</th>
+        <th>Name</th>
+        <th>Category</th>
+        <th>Description</th>
+        <th>Price</th>
+        <th>Product Condition</th>
+        <th>Product Status</th>
+        <th>Items In Stock</th>
+        <th>Manufacturer</th>
+    </tr>
+
+    <tr th:each="product : ${products}">
+        <td th:text="${product.id}">1</td>
+        <td th:text="${product.name}">Apple</td>
+        <td th:text="${product.category}">Phone</td>
+        <td th:text="${product.description}">iPhone</td>
+        <td th:text="${product.price}">1</td>
+        <td th:text="${product.productCondition}">GOOD</td>
+        <td th:text="${product.productStatus}">IN_STOCK</td>
+        <td th:text="${product.inStock}">1</td>
+        <td th:text="${product.manufacturer}">Ap</td>
+    </tr>
+</table>
+</body>
+</html>
