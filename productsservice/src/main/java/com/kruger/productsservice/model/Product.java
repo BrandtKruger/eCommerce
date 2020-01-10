@@ -7,17 +7,24 @@ import javax.persistence.*;
 public class Product {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name="id")
-    private long id;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id", updatable = false, nullable = false)
+    private Long id;
     private String name;
     private String category;
-    private String description;
+
+    @Lob
+    private Byte[] description;
     private long price;
-    @Column(name="product_condition;")
-    private String productCondition;
-    @Column(name="product_status;")
-    private String productStatus;
+
+    @Column(name="product_condition")
+    @Enumerated(value = EnumType.STRING)
+    private PRODUCT_CONDITION productCondition;
+
+    @Column(name="product_status")
+    @Enumerated(value = EnumType.STRING)
+    private PRODUCT_STATUS productStatus;
+
     @Column(name = "units_in_stock")
     private int inStock;
     private String manufacturer;
@@ -49,11 +56,11 @@ public class Product {
         this.category = category;
     }
 
-    public String getDescription() {
+    public Byte[] getDescription() {
         return description;
     }
 
-    public void setDescription(String description) {
+    public void setDescription(Byte[] description) {
         this.description = description;
     }
 
@@ -65,19 +72,19 @@ public class Product {
         this.price = price;
     }
 
-    public String getProductCondition() {
+    public PRODUCT_CONDITION getProductCondition() {
         return productCondition;
     }
 
-    public void setProductCondition(String productCondition) {
+    public void setProductCondition(PRODUCT_CONDITION productCondition) {
         this.productCondition = productCondition;
     }
 
-    public String getProductStatus() {
+    public PRODUCT_STATUS getProductStatus() {
         return productStatus;
     }
 
-    public void setProductStatus(String productStatus) {
+    public void setProductStatus(PRODUCT_STATUS productStatus) {
         this.productStatus = productStatus;
     }
 

@@ -2,7 +2,7 @@ package com.kruger.productsservice.controller;
 
 
 import com.kruger.productsservice.model.Product;
-import com.kruger.productsservice.services.ProductService;
+import com.kruger.productsservice.repositories.ProductRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -13,15 +13,11 @@ import java.util.Optional;
 public class ProductController {
 
     @Autowired
-    ProductService productService;
+    ProductRepository productRepository;
 
     @RequestMapping("/{productId}")
     public Optional<Product> getProductById(@PathVariable("productId") long productId){
-        return productService.getProductById(productId);
+        return productRepository.findById(productId);
     }
 
-    @RequestMapping(value = "addproduct", method = RequestMethod.POST)
-    public void addProduct( @ModelAttribute("product")Product product){
-        productService.addProduct(product);
-    }
 }

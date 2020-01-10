@@ -15,7 +15,7 @@ public class JpaConfig {
     @Bean
     public LocalEntityManagerFactoryBean entityManagerFactory(){
         LocalEntityManagerFactoryBean  factoryBean = new LocalEntityManagerFactoryBean();
-        factoryBean.setPersistenceUnitName("productsdb");
+        factoryBean.setPersistenceUnitName("productdb");
         return factoryBean;
     }
 

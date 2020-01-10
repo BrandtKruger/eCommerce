@@ -1,15 +1,27 @@
 package com.kruger.productsservice.model;
 
+import javax.persistence.*;
 import java.util.stream.Stream;
 
+@Entity
+@Table(name = "productcondition")
 public enum PRODUCT_CONDITION {
 
     NEW("New"),
     USED_GOOD("Used But Good Condition"),
     DAMAGED("Damaged");
 
-    String conditionDescription;
-    int conditionEnum;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id", updatable = false, nullable = false)
+    private Long id;
+    @Column(name = "product_condition")
+    @Enumerated(value = EnumType.STRING)
+    private PRODUCT_CONDITION product_condition;
+    @Transient
+    private int conditionEnum;
+    @Transient
+    private String conditionDescription;
 
     PRODUCT_CONDITION() {
     }

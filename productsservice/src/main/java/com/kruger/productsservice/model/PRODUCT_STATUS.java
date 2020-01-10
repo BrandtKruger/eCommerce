@@ -1,7 +1,10 @@
 package com.kruger.productsservice.model;
 
+import javax.persistence.*;
 import java.util.stream.Stream;
 
+@Entity
+@Table(name = "productstatus")
 public enum PRODUCT_STATUS {
 
     IN_STOCK("In Stock"),
@@ -12,8 +15,18 @@ public enum PRODUCT_STATUS {
     ORDERED("Ordered"),
     WAITING_FOT_STOCK("Waiting For Stock");
 
-    int productStatusEnum;
-    String productStatusDescription;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id", updatable = false, nullable = false)
+    private Long id;
+    @Column(name = "product_status")
+    @Enumerated(value = EnumType.STRING)
+    private PRODUCT_CONDITION product_status;
+
+    @Transient
+    private String productStatusDescription;
+    @Transient
+    private int productStatusEnum;
 
     PRODUCT_STATUS() {
     }
