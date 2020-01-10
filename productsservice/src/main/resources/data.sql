@@ -9,3 +9,11 @@ insert into productstatus (product_status) values ('MISSING');
 insert into productstatus (product_status) values ('NO_STOCK');
 insert into productstatus (product_status) values ('ORDERED');
 insert into productstatus (product_status) values ('WAITING_FOT_STOCK');
+
+insert into productcategory (product_category) values ('IPHONE');
+insert into productcategory (product_category) values ('MAC_BOOK_PRO');
+insert into productcategory (product_category) values ('MAC_BOOK_AIR');
+insert into productcategory (product_category) values ('MAC_MINI');
+insert into productcategory (product_category) values ('IPAD');
+insert into productcategory (product_category) values ('WATCH');
+insert into productcategory (product_category) values ('APPLE_TV');

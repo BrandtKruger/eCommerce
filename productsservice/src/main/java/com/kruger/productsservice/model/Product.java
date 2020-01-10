@@ -11,7 +11,9 @@ public class Product {
     @Column(name = "id", updatable = false, nullable = false)
     private Long id;
     private String name;
-    private String category;
+
+    @Enumerated(value = EnumType.STRING)
+    private PRODUCT_CATEGORY category;
 
     @Lob
     private Byte[] description;
@@ -48,11 +50,11 @@ public class Product {
         this.name = name;
     }
 
-    public String getCategory() {
+    public PRODUCT_CATEGORY getCategory() {
         return category;
     }
 
-    public void setCategory(String category) {
+    public void setCategory(PRODUCT_CATEGORY category) {
         this.category = category;
     }
 
