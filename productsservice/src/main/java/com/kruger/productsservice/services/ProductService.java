@@ -22,9 +22,25 @@ public class ProductService {
         productRepository.save(product);
     }
 
-    public Products getProductsByCategory(PRODUCT_CATEGORY category){
+    public Optional<Products> getProductsByCategory(PRODUCT_CATEGORY category){
         List<Product> products =  productRepository.findByCategory(category);
-        return (Products) products;
+        Products product = new Products();
+        product.setProducts(products);
+        return Optional.of(product);
     }
 
+    public Optional<Product> findById(long productId) {
+        return productRepository.findById(productId);
+    }
+
+    public Optional<Products> getAllProducts() {
+
+        Iterable<Product> products;
+        products =  productRepository.findAll();
+
+        Products productsList = new Products();
+        products.forEach(productsList::addProduct);
+
+        return Optional.of(productsList);
+    }
 }

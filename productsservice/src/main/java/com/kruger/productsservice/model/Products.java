@@ -1,5 +1,6 @@
 package com.kruger.productsservice.model;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class Products {
@@ -7,6 +8,7 @@ public class Products {
     List<Product> products;
 
     public Products() {
+        products = new ArrayList<>();
     }
 
     public Products(List<Product> products) {
@@ -19,5 +21,9 @@ public class Products {
 
     public void setProducts(List<Product> products) {
         this.products = products;
+    }
+
+    public void addProduct(Product product) {
+        this.products.add(product);
     }
 }

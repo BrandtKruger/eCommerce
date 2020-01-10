@@ -5,6 +5,7 @@ import com.kruger.productsservice.model.PRODUCT_CATEGORY;
 import com.kruger.productsservice.model.Product;
 import com.kruger.productsservice.model.Products;
 import com.kruger.productsservice.repositories.ProductRepository;
+import com.kruger.productsservice.services.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -16,22 +17,22 @@ import java.util.Optional;
 public class ProductController {
 
     @Autowired
-    ProductRepository productRepository;
+    ProductService productService;
 
     @RequestMapping("/{productId}")
     public Optional<Product> getProductById(@PathVariable("productId") long productId){
-        return productRepository.findById(productId);
+        return productService.findById(productId);
     }
 
     @RequestMapping("/products/{category}")
     public Optional<Products> getProductsByCategory(@PathVariable("category")PRODUCT_CATEGORY category){
+        return productService.getProductsByCategory(category);
+    }
 
+    @RequestMapping("/products")
+    public Optional<Products> getAllProducts(){
+        return productService.getAllProducts();
 
-        List<Product> products =  productRepository.findByCategory(category);
-
-        Products product = new Products();
-        product.setProducts(products);
-        return Optional.of(product);
     }
 
 }
