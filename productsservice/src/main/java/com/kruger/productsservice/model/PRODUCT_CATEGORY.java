@@ -1,6 +1,7 @@
 package com.kruger.productsservice.model;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
 import java.util.stream.Stream;
 
 @Entity
@@ -21,6 +22,7 @@ public enum PRODUCT_CATEGORY {
     private Long id;
 
     @Enumerated(value = EnumType.STRING)
+    @NotNull
     private PRODUCT_CATEGORY category;
 
     @Transient

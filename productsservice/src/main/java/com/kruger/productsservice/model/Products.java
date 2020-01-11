@@ -1,8 +1,11 @@
 package com.kruger.productsservice.model;
 
+import lombok.Data;
+
 import java.util.ArrayList;
 import java.util.List;
 
+@Data
 public class Products {
 
     List<Product> products;
@@ -12,14 +15,6 @@ public class Products {
     }
 
     public Products(List<Product> products) {
-        this.products = products;
-    }
-
-    public List<Product> getProducts() {
-        return products;
-    }
-
-    public void setProducts(List<Product> products) {
         this.products = products;
     }
 

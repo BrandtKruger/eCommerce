@@ -1,6 +1,7 @@
 package com.kruger.productsservice.model;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
 import java.util.stream.Stream;
 
 @Entity
@@ -16,6 +17,7 @@ public enum PRODUCT_CONDITION {
     @Column(name = "id", updatable = false, nullable = false)
     private Long id;
     @Column(name = "product_condition")
+    @NotNull
     @Enumerated(value = EnumType.STRING)
     private PRODUCT_CONDITION product_condition;
     @Transient
