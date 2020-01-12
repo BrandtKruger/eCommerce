@@ -13,7 +13,7 @@ import java.util.HashSet;
 import java.util.Set;
 
 import static org.junit.jupiter.api.Assertions.*;
-import static org.mockito.Mockito.when;
+import static org.mockito.Mockito.*;
 
 class ProductRepositoryTest {
 
@@ -28,7 +28,7 @@ class ProductRepositoryTest {
     }
 
     @Test
-    void findByCategory() {
+    void findAllProducts() {
 
         Product product = new Product();
         HashSet products =  new HashSet();
@@ -37,5 +37,6 @@ class ProductRepositoryTest {
         when(productRepository.findAll()).thenReturn(products);
         Set<Product> productSet = productService.getAllProducts();
         assertEquals(productSet.size(), 1);
+        verify(productRepository, times(1)).findAll();
     }
 }
