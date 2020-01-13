@@ -40,6 +40,15 @@ class ProductControllerTest {
     @Test
     void getProductsByCategory() {
     }
+    
+    @Test
+    public void testMockMVC(){
+        MockMvc mockMvc = MockMvcBuilder.standaloneSetup(productController).build();
+        
+        mockMvc.perform(get("/"))
+            .andExpect(status().isOk())
+            .andExpect(view().name("products"));     
+    }
 
     @Test
     void getAllProducts() {
